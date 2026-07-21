@@ -16,10 +16,16 @@ builder.Services.AddSwaggerGen();
 
 
 // Database Connection
+// builder.Services.AddDbContext<HelpDeskDbContext>(options =>
+//     options.UseSqlServer(
+//         builder.Configuration.GetConnectionString("DefaultConnection")
+//     ));
+// Database Connection for MySQL
 builder.Services.AddDbContext<HelpDeskDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")
-    ));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+    ));    
 
 
 // Dependency Injection (Service Layer)
