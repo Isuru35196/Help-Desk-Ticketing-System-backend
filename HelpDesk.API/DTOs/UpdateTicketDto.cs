@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpDesk.API.DTOs
 {
-    public class CreateTicketDto
+    public class UpdateTicketDto
     {
         [Required]
         [StringLength(100, MinimumLength = 3)]
@@ -15,5 +15,9 @@ namespace HelpDesk.API.DTOs
         [Required]
         [RegularExpression("^(Low|Medium|High)$", ErrorMessage = "Priority must be 'Low', 'Medium', or 'High'.")]
         public string Priority { get; set; }
+
+        [Required]
+        [RegularExpression("^(Open|Pending|Resolved|Closed)$", ErrorMessage = "Status must be 'Open', 'Pending', 'Resolved', or 'Closed'.")]
+        public string Status { get; set; }
     }
 }
